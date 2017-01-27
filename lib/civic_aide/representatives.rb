@@ -8,7 +8,7 @@ module CivicAide
     end
 
     def at(address)
-      response = client.post("/representatives/lookup", {includeOffices: @include_offices}, {:address => address})
+      response = client.get("/representatives", {includeOffices: @include_offices, :address => address})
       response.except!(:kind, :status)
     end
 
